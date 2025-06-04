@@ -1,11 +1,16 @@
-import { ActivityIndicator, View } from "react-native"
+import { StatusBar } from 'expo-status-bar';
+import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 
 const Spinner = () => {
   return (
-    <View className="flex-1 bg-black justify-center items-center">
-        <ActivityIndicator color="#FFF" size="large"/>
-    </View>
-  )
-}
+    <>
+      <StatusBar style="light" backgroundColor="#101215" hidden />
 
-export default Spinner
+      <SafeAreaView className="flex-1 items-center justify-center bg-black">
+        <ActivityIndicator color="#FFF" size="large" />
+      </SafeAreaView>
+    </>
+  );
+};
+
+export default Spinner;
