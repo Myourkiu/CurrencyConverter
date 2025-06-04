@@ -1,37 +1,39 @@
 {
   "expo": {
-    "name": "currency-converter",
+    "name": "Conversor de Moedas",
     "slug": "currency-converter",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
     "plugins": [],
-
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-
+    "icon": "./assets/conversor.png",
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/conversor.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.myourkiu.currencyconverter"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f44ed784-1fe9-4c77-8ece-3f5372259837"
       }
     }
   }
