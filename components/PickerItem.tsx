@@ -10,9 +10,9 @@ interface PickerProps {
 
 const PickerItem = ({currency, selectedCurrency, onChange} : PickerProps) => {
   return (
-    <Picker selectedValue={selectedCurrency} onValueChange={(value) => onChange(value)}>
+    <Picker selectedValue={selectedCurrency}  onValueChange={(value) => onChange(value)}>
       {currency.map((item, index) => (
-        <Picker.Item key={index} label={item.key} value={item.key}/>
+        <Picker.Item key={index} label={item.key} value={item.key} color="#000"/>
       ))}
     </Picker>
   )

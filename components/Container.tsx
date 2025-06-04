@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { View } from "react-native"
+import { SafeAreaView, View } from "react-native"
 
 interface ContainerProps {
     children: ReactNode
@@ -7,9 +7,9 @@ interface ContainerProps {
 
 const Container = ({children} : ContainerProps) => {
   return (
-    <View className="flex-1 bg-[#101215] pt-16 items-center">
+    <SafeAreaView className="flex-1 bg-[#101215] items-center">
       {children}
-    </View>
+    </SafeAreaView>
   )
 }
 

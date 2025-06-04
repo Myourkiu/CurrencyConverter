@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <Container>
-      <View className="mb-px w-[90%] rounded-t-lg bg-[#f9f9f9] p-2">
+      <View className="mb-px w-[90%] rounded-t-lg bg-[#f9f9f9] p-2 mt-16">
         <Text className="pl-1 pt-1 text-base font-medium text-[#000]">Selecione sua moeda</Text>
         <PickerItem
           currency={currency}
