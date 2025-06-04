@@ -4,6 +4,9 @@ import { Text, View } from 'react-native';
 import PickerItem from 'components/PickerItem';
 
 export default function App() {
+  if(loading)
+    return <Spinner/>
+
   return (
     <Container>
       <View className="w-[90%] rounded-t-lg bg-[#f9f9f9] p-2">
