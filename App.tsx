@@ -1,6 +1,6 @@
 import Container from 'components/Container';
 import './global.css';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Keyboard, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import PickerItem from 'components/PickerItem';
 import { useEffect, useState } from 'react';
 import { api } from 'service/api';
@@ -11,7 +11,7 @@ export default function App() {
   const [currency, setCurrency] = useState<any[]>([]);
   const [selectedCurrency, setSelectedCurrency] = useState(null);
   const [inputValue, setInputValue] = useState('');
-  const [currencyValue, setCurrencyValue] = useState(null);
+  const [currencyValue, setCurrencyValue] = useState<string | null>(null);
   const [convertedValue, setConvertedValue] = useState(0);
 
   async function loadCurrency() {
@@ -27,6 +27,18 @@ export default function App() {
     setCurrency(currency);
     setSelectedCurrency(currency[0].key);
     setLoading(false);
+  }
+  async function convert() {
+    if (inputValue === '' || inputValue === null) return;
+
+    const response = await api.get(`/all/${selectedCurrency}-BRL`)
+    //@ts-ignore
+    let result = (response.data[selectedCurrency].ask * parseFloat(inputValue))
+
+    setConvertedValue(result)
+    setCurrencyValue(inputValue.toString())
+
+    Keyboard.dismiss()
   }
 
   useEffect(() => {
@@ -58,14 +70,15 @@ export default function App() {
         />
       </View>
       <TouchableOpacity 
+      onPress={convert} 
       className="mt-2 w-[90%] rounded-lg bg-[#fb4b57] p-3">
         <Text className="text-center text-xl font-semibold">Converter</Text>
       </TouchableOpacity>
       {convertedValue !== 0 && (
         <View className="mt-9 w-[90%] items-center justify-center rounded-lg bg-[#fff] p-6">
-          <Text className="text-3xl font-semibold text-[#000]">3 BTC</Text>
+          <Text className="text-3xl font-semibold text-[#000]">{inputValue} {selectedCurrency}</Text>
           <Text className="my-4 text-lg font-semibold text-[#000]">corresponde a</Text>
-          <Text className="text-3xl font-semibold text-[#000]">R$ 100,00</Text>
+          <Text className="text-3xl font-semibold text-[#000]">{convertedValue.toLocaleString('pt-BR', {style: "currency", currency: "BRL"})}</Text>
         </View>
       )}
     </Container>
